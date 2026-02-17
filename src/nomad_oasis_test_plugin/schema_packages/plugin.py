@@ -12,15 +12,13 @@ class TestSection(MSection):
 # registra le sezioni nel package
 m_package.__init_metainfo__()
 
-
 class TestSchema(SchemaPackageEntryPoint):
-    # opzionale ma utile
-    name = "test_schema"
-    description = "Minimal test schema package for verifying plugin loading."
+    name: str = "test_schema"
+    description: str = "Minimal test schema package for verifying plugin loading."
 
     def load(self):
-        # IMPORTANT: deve tornare SchemaPackage, non MSection
         return m_package
+
 
 
 test_schema = TestSchema()
