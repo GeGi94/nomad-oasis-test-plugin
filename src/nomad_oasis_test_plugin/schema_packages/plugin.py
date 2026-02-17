@@ -1,26 +1,20 @@
-from nomad.metainfo import (
-    MSection,
-    Quantity,
-    Section,
-)
-from nomad.config.models.plugins import SchemaPackageEntryPoint
+from nomad.metainfo import SchemaPackage, MSection, Quantity, Section
+
+m_package = SchemaPackage()
 
 
 class TestSection(MSection):
     """
     Minimal test section for verifying plugin loading.
     """
-
     m_def = Section(label="TestSection")
 
-    name = Quantity(
-        type=str,
-        description="A simple test quantity."
-    )
+    name = Quantity(type=str, description="A simple test quantity.")
 
 
-class TestSchema(SchemaPackageEntryPoint):
-    def load(self):
-        return TestSection
+# IMPORTANT: registers all sections/quantities in this module into the package
+m_package.__init_metainfo__()
 
-test_schema = TestSchema()
+
+# Entry point target: MUST be a SchemaPackage instance
+test_schema = m_package
