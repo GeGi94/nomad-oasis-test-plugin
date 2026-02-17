@@ -17,4 +17,5 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [project.entry-points."nomad.plugin"]
-test_schema = "nomad_oasis_test_plugin.schema_packages.plugin:TestSchema"
+test_schema = "nomad_oasis_test_plugin.schema_packages.plugin:test_schema"
+

@@ -22,3 +22,5 @@ class TestSection(MSection):
 class TestSchema(SchemaPackageEntryPoint):
     def load(self):
         return TestSection
+
+test_schema = TestSchema()
